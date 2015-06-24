@@ -1,3 +1,3 @@
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-add_library(sourceCore Source.cpp HardSource.cpp)
+add_library(fieldCore EMField.cpp EMField.h)
 add_subdirectory(unit_test)

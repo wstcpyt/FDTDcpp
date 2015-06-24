@@ -3,15 +3,15 @@
 //
 
 #include <gmock/gmock.h>
-#include "SourceCore/Source.h"
+#include "SourceCore/HardSource.h"
 using namespace testing;
 
 class SourceType: public Test{
 public:
-    Source source;
+    HardSource hardSource;
 };
 
 TEST_F(SourceType, HardSource){
-    ASSERT_THAT(source.addSource(30, "hardsource"), 1);
+    ASSERT_THAT(hardSource.addSource(30), 1);
 }
 
