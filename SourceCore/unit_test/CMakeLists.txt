@@ -1,0 +1,2 @@
+add_gmock_test(SourceUnitTest SourceUnitTest.cpp)
+target_link_libraries(SourceUnitTest sourceCore)
