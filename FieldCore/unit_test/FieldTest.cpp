@@ -16,7 +16,8 @@ TEST_F(FieldTest, EMfieldConstructGridSize){
     ASSERT_THAT(emField.getGridsize(), 200);
 }
 
-TEST_F(FieldTest, EMfieldConstructEandMGridinRightSIZE){
-    ASSERT_THAT(emField.getEGrid().size(), 200);
-    ASSERT_THAT(emField.getMGrid().size(), 200);
+TEST_F(FieldTest, UpdateEGrid){
+}
+
+TEST_F(FieldTest, UpdateHGrid){
 }

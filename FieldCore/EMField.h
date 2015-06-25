@@ -5,23 +5,18 @@
 #ifndef FDTDCPP_FIELD_H
 #define FDTDCPP_FIELD_H
 #include <vector>
-using namespace std;
 class EMField
 {
     const int gridsize;
-    vector<double> EGrid;
-    vector<double> MGrid;
+    int gridpoint;
+    const double imp0 = 377.0;
 public:
     EMField(int size);
     ~EMField(){};
+    void updateEGrid(std::vector<double>& EGrid_z, std::vector<double>& HGrid_y);
+    void updateHGrid(std::vector<double>& EGrid_z, std::vector<double>& HGrid_y);
     const int getGridsize() const {
         return gridsize;
-    }
-    vector<double> getEGrid() const {
-        return EGrid;
-    }
-    vector<double> getMGrid() const {
-        return MGrid;
     }
 private:
 };

@@ -13,6 +13,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 #add subdirectories
 add_subdirectory(SourceCore)
 add_subdirectory(FieldCore)
+add_subdirectory(FDTDCore)
 
 
 #link libraries
