@@ -5,10 +5,11 @@
 #ifndef FDTDCPP_HARDSOURCE_H
 #define FDTDCPP_HARDSOURCE_H
 
+#include <vector>
 #include "Source.h"
 class HardSource: Source
 {
 public:
-    double addSource(const int& time) const ;
+    double addSource(const int& time, std::vector<double>& EGrid_z) const ;
 };
 #endif //FDTDCPP_HARDSOURCE_H

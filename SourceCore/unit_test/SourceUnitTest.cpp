@@ -4,6 +4,7 @@
 
 #include <gmock/gmock.h>
 #include "SourceCore/HardSource.h"
+#include <vector>
 using namespace testing;
 
 class SourceType: public Test{
@@ -12,6 +13,7 @@ public:
 };
 
 TEST_F(SourceType, HardSource){
-    ASSERT_THAT(hardSource.addSource(30), 1);
+    std::vector<double> EGrid_z(200, 0.0);
+    ASSERT_THAT(hardSource.addSource(30, EGrid_z), 1);
 }
 

@@ -10,6 +10,14 @@ public:
     FDTD fdtd;
 };
 
+TEST_F(FDTDTest, FDTDsimulationhasEGrid){
+    ASSERT_THAT(fdtd.getEGrid_z().size(), SIZE);
+}
+
+TEST_F(FDTDTest, FDTDsimulatiohasHGrid){
+    ASSERT_THAT(fdtd.getHGrid_y().size(), SIZE);
+}
+
 TEST_F(FDTDTest, FDTDrunsimulation){
     fdtd.runSimulation();
 }

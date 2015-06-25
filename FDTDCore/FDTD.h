@@ -5,14 +5,24 @@
 #ifndef FDTDCPP_FDTD_H
 #define FDTDCPP_FDTD_H
 
+#include <vector>
 #define SIZE 200
 #define MAXTIME 250
 
 class FDTD{
     int time;
+    std::vector<double> EGrid_Z;
+    std::vector<double> HGrid_y;
 public:
-    FDTD(){};
+    FDTD();
     ~FDTD(){};
     void runSimulation();
+    const std::vector<double> &getEGrid_z() const {
+        return EGrid_Z;
+    }
+
+    const std::vector<double> &getHGrid_y() const {
+        return HGrid_y;
+    }
 };
 #endif //FDTDCPP_FDTD_H
