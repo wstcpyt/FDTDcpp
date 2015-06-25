@@ -9,7 +9,9 @@ class Source
 public:
     Source();
     ~Source();
-    double addSource(const int time) const;
+    double addSource(const int time) const{
+        return 1.0;
+    };
 
 private:
 
