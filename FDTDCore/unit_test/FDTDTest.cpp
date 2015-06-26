@@ -21,3 +21,7 @@ TEST_F(FDTDTest, FDTDsimulatiohasHGrid){
 TEST_F(FDTDTest, FDTDrunsimulation){
     fdtd.runSimulation();
 }
+
+TEST_F(FDTDTest, FDTDLineChartVector){
+    ASSERT_THAT(fdtd.getlineChartVector().size(), MAXTIME);
+}
