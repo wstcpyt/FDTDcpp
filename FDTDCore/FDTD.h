@@ -7,13 +7,15 @@
 
 #include <vector>
 #define SIZE 200
-#define MAXTIME 250
+#define MAXTIME 450
+#define SOURCEPOSITION 50
 
 class FDTD{
     int time;
     std::vector<double> EGrid_Z;
     std::vector<double> HGrid_y;
     std::vector<double> lineChartVector;
+    std::vector<std::vector<double>> waterFallVector;
 public:
     FDTD();
     ~FDTD(){};
@@ -26,6 +28,9 @@ public:
     }
     const std::vector<double> &getlineChartVector() const {
         return lineChartVector;
+    }
+    const std::vector<std::vector<double>> &getwaterFallVector() const {
+        return waterFallVector;
     }
 
 };

@@ -25,3 +25,8 @@ TEST_F(FDTDTest, FDTDrunsimulation){
 TEST_F(FDTDTest, FDTDLineChartVector){
     ASSERT_THAT(fdtd.getlineChartVector().size(), MAXTIME);
 }
+
+TEST_F(FDTDTest, FDTDWaterFallVector){
+    ASSERT_THAT(fdtd.getwaterFallVector().size(), MAXTIME);
+    ASSERT_THAT(fdtd.getwaterFallVector()[0].size(), SIZE);
+}

@@ -7,7 +7,7 @@
 
 #include <vector>
 #include "Source.h"
-class HardSource: Source
+class HardSource: public Source
 {
 public:
     double addSource(const int& time, std::vector<double>& EGrid_z) const ;
