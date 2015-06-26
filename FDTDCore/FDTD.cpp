@@ -5,7 +5,6 @@
 #include "FDTD.h"
 #include "FieldCore/EMField.h"
 #include "SourceCore/HardSource.h"
-#include <stdio.h>
 
 void FDTD::runSimulation(){
     EMField field(200);
