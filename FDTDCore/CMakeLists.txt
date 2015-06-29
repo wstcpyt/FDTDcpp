@@ -1,5 +1,5 @@
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-add_library(fdtdCore FDTD.cpp)
+add_library(fdtdCore FDTD.cpp FDTD_2D_TMz.cpp)
 add_subdirectory(unit_test)
 target_link_libraries(fdtdCore fieldCore)
 target_link_libraries(fdtdCore visualCore)

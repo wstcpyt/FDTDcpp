@@ -23,10 +23,10 @@ public:
     FDTD();
     ~FDTD(){};
     void runSimulation();
-    const std::vector<double> &getEGrid_z() const {
+    const std::vector<double> &getEz() const {
         return Ez;
     }
-    const std::vector<double> &getHGrid_y() const {
+    const std::vector<double> &getHy() const {
         return Hy;
     }
     const std::vector<double> &getlineChartVector() const {

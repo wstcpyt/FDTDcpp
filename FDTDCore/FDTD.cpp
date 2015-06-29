@@ -5,6 +5,14 @@
 #include "FDTD.h"
 #include "SourceCore/AdditiveSource.h"
 #include "VisualCore/ColorMap.h"
+FDTD::FDTD() {
+    Ez.assign(STRUCTURE_SIZE, 0.0);
+    Hy.assign(STRUCTURE_SIZE - 1, 0.0);
+    lineChartVector.assign(MAXTIME, 0.0);
+    waterFallVector.assign(STRUCTURE_SIZE, std::vector<double>(MAXTIME));
+}
+
+
 void FDTD::runSimulation(){
     ColorMap colorMap;
     for (time = 0; time < MAXTIME; time++){
@@ -14,18 +22,11 @@ void FDTD::runSimulation(){
         updateElectricPart(time);
         int gridpoint;
         for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
-            waterFallVector[time][gridpoint] = Ez[gridpoint];
+            waterFallVector[gridpoint][time] = Ez[gridpoint];
         }
         lineChartVector[time] = Ez[50];
     }
     colorMap.drawchart(waterFallVector);
-}
-
-FDTD::FDTD() {
-    Ez.assign(STRUCTURE_SIZE, 0.0);
-    Hy.assign(STRUCTURE_SIZE - 1, 0.0);
-    lineChartVector.assign(MAXTIME, 0.0);
-    waterFallVector.assign(MAXTIME, std::vector<double>(STRUCTURE_SIZE));
 }
 
 void FDTD::updateMagneticPart(const int &time) {

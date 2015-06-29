@@ -7,4 +7,7 @@
 #define IMP0 377.0
 #define STRUCTURE_SIZE 200
 #define MAXTIME 450
+#define STRUCTURE_SIZE_X 101
+#define STRUCTURE_SIZE_Y 81
 #endif //FDTDCPP_CONSTANT_H
+

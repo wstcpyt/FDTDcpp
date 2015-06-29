@@ -9,13 +9,13 @@ void ColorMap::drawchart(std::vector<std::vector<double>>& ColorMapVector){
      *     gnuplot command line.  "The -persistent" keeps the plot open even after your
      *     C program terminates.
      */
-    unsigned long xsize = ColorMapVector[0].size();
-    unsigned long ysize = ColorMapVector.size();
+    unsigned long xsize = ColorMapVector.size();
+    unsigned long ysize = ColorMapVector[0].size();
     int xindex;
     int yindex;
     for (yindex=0; yindex<ysize; yindex++){
         for (xindex=0; xindex<xsize; xindex++){
-            fprintf(temp, "%lf ", ColorMapVector[yindex][xindex]);
+            fprintf(temp, "%lf ", ColorMapVector[xindex][yindex]);
         }
             fprintf(temp, "\n");
     }

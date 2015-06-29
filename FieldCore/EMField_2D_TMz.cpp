@@ -20,7 +20,7 @@ void EMField2DTMz::updateMagneticField(std::vector<std::vector<double>> &Ez, std
     for (xgridpoint = 0; xgridpoint < xgridsize - 1; xgridpoint++) {
         for (ygridpoint = 0; ygridpoint < ygridsize; ygridpoint++) {
             Hy[xgridpoint][ygridpoint] =
-                    getChyh() * Hy[xgridpoint][ygridpoint] -
+                    getChyh() * Hy[xgridpoint][ygridpoint] +
                     getChye() * (Ez[xgridpoint + 1][ygridpoint] - Ez[xgridpoint][ygridpoint]);
         }
     }
