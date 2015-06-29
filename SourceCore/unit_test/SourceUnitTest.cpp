@@ -5,6 +5,7 @@
 #include <gmock/gmock.h>
 #include "SourceCore/HardSource.h"
 #include "SourceCore/AdditiveSource.h"
+#include "SourceCore/RickerWaveletSource.h"
 #include <vector>
 using namespace testing;
 
@@ -12,15 +13,21 @@ class SourceType: public Test{
 public:
     HardSource hardSource;
     AdditiveSource additiveSource;
+    RickerWaveletSource rickerWaveletSource;
 };
 
 TEST_F(SourceType, HardSource){
-    std::vector<double> EGrid_z(200, 0.0);
-    ASSERT_THAT(hardSource.addSource(30, EGrid_z), 1);
+    std::vector<double> Ez(200, 0.0);
+    ASSERT_THAT(hardSource.addSource(30, Ez), 1);
 }
 
 TEST_F(SourceType, AdditiveSource){
-    std::vector<double> EGrid_z(200, 0.0);
-    additiveSource.addSource(30, EGrid_z, 50);
-    ASSERT_THAT(EGrid_z[50], 1);
+    std::vector<double> Ez(200, 0.0);
+    additiveSource.addSource(30, Ez, 50);
+    ASSERT_THAT(Ez[50], 1);
+}
+
+TEST_F(SourceType, rickerWaveletSource){
+    std::vector<std::vector<double>> Ez(200, std::vector<double>(200, 0.0));
+    rickerWaveletSource.addRickerWaveletSource(Ez, 1, 1, 1.0, 0.0 );
 }

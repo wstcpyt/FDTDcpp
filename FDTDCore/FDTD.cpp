@@ -3,29 +3,36 @@
 //
 
 #include "FDTD.h"
-#include "FieldCore/EMField.h"
 #include "SourceCore/AdditiveSource.h"
 #include "VisualCore/ColorMap.h"
 void FDTD::runSimulation(){
-    EMField field(200);
-    AdditiveSource additiveSource;
     ColorMap colorMap;
     for (time = 0; time < MAXTIME; time++){
-        field.updateEGrid(EGrid_Z, HGrid_y);
-        field.updateHGrid(EGrid_Z, HGrid_y);
-        additiveSource.addSource(time, EGrid_Z, SOURCEPOSITION);
+        updateMagneticPart(time);
+        boundary.addMagneticTFSF(time, SOURCEPOSITION, Hy);
+        boundary.addElectricTFSF(time, SOURCEPOSITION, Ez);
+        updateElectricPart(time);
         int gridpoint;
-        for (gridpoint=0; gridpoint < SIZE; gridpoint++){
-            waterFallVector[time][gridpoint] = EGrid_Z[gridpoint];
+        for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
+            waterFallVector[time][gridpoint] = Ez[gridpoint];
         }
-        lineChartVector[time] = EGrid_Z[50];
+        lineChartVector[time] = Ez[50];
     }
     colorMap.drawchart(waterFallVector);
 }
 
 FDTD::FDTD() {
-    EGrid_Z.assign(SIZE, 0.0);
-    HGrid_y.assign(SIZE, 0.0);
+    Ez.assign(STRUCTURE_SIZE, 0.0);
+    Hy.assign(STRUCTURE_SIZE - 1, 0.0);
     lineChartVector.assign(MAXTIME, 0.0);
-    waterFallVector.assign(MAXTIME, std::vector<double>(SIZE));
+    waterFallVector.assign(MAXTIME, std::vector<double>(STRUCTURE_SIZE));
+}
+
+void FDTD::updateMagneticPart(const int &time) {
+    emField.updateMagneticField(Ez, Hy);
+}
+
+void FDTD::updateElectricPart(const int &time) {
+    emField.updateElectricField(Ez, Hy);
+    boundary.addElectricFirstABC(Ez);
 }

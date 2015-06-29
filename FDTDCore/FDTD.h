@@ -6,25 +6,28 @@
 #define FDTDCPP_FDTD_H
 
 #include <vector>
-#define SIZE 200
-#define MAXTIME 450
+#include "BoundaryCore/Boundary.h"
+#include "FieldCore/EMField.h"
+#include "constant.h"
 #define SOURCEPOSITION 50
 
 class FDTD{
     int time;
-    std::vector<double> EGrid_Z;
-    std::vector<double> HGrid_y;
+    EMField emField = EMField::EMField();
+    std::vector<double> Ez;
+    std::vector<double> Hy;
     std::vector<double> lineChartVector;
     std::vector<std::vector<double>> waterFallVector;
+    Boundary boundary;
 public:
     FDTD();
     ~FDTD(){};
     void runSimulation();
     const std::vector<double> &getEGrid_z() const {
-        return EGrid_Z;
+        return Ez;
     }
     const std::vector<double> &getHGrid_y() const {
-        return HGrid_y;
+        return Hy;
     }
     const std::vector<double> &getlineChartVector() const {
         return lineChartVector;
@@ -33,5 +36,8 @@ public:
         return waterFallVector;
     }
 
+private:
+    void updateMagneticPart(const int& time);
+    void updateElectricPart(const int& time);
 };
 #endif //FDTDCPP_FDTD_H

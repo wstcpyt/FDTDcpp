@@ -1,0 +1,2 @@
+add_gmock_test(StructureTest StructureTest.cpp)
+target_link_libraries(StructureTest structureCore)
