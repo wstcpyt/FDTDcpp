@@ -21,7 +21,7 @@ void FDTD2DTMz::runSimulation() {
         emField2DTMz.updateMagneticField(Ez, Hx, Hy);
         emField2DTMz.updateElectricField(Ez, Hx, Hy);
         rickerWaveletSource.addRickerWaveletSource(Ez, STRUCTURE_SIZE_X / 2, STRUCTURE_SIZE_Y / 2, time, 0.0);
-        if (time == 50){
+        if (time == 110){
             for (ygridpoint = 0; ygridpoint < STRUCTURE_SIZE_Y; ygridpoint++){
                     for (xgridpoint = 0; xgridpoint < STRUCTURE_SIZE_X; xgridpoint++){
                     waterFallVector[xgridpoint][ygridpoint] = Ez[xgridpoint][ygridpoint];

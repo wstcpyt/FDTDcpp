@@ -6,8 +6,8 @@
 
 void EMField2DTMz::updateMagneticField(std::vector<std::vector<double>> &Ez, std::vector<std::vector<double>> &Hx,
                                        std::vector<std::vector<double >> &Hy) const {
-    unsigned long ygridsize = Ez.size();
-    unsigned long xgridsize = Ez[0].size();
+    unsigned long ygridsize = Ez[0].size();
+    unsigned long xgridsize = Ez.size();
     int xgridpoint;
     int ygridpoint;
     for (xgridpoint = 0; xgridpoint < xgridsize; xgridpoint++) {
@@ -28,8 +28,8 @@ void EMField2DTMz::updateMagneticField(std::vector<std::vector<double>> &Ez, std
 
 void EMField2DTMz::updateElectricField(std::vector<std::vector<double>> &Ez, std::vector<std::vector<double>> &Hx,
                                        std::vector<std::vector<double >> &Hy) const {
-    unsigned long ygridsize = Ez.size();
-    unsigned long xgridsize = Ez[0].size();
+    unsigned long ygridsize = Ez[0].size();
+    unsigned long xgridsize = Ez.size();
     int xgridpoint;
     int ygridpoint;
     for (xgridpoint = 1; xgridpoint < xgridsize - 1; xgridpoint++) {
