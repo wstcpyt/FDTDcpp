@@ -10,7 +10,7 @@
 #include "constant.h"
 #define PPW 20
 class RickerWaveletSource{
-    const double Cdtds = 1.0 / sqrt(2.0);
+    const double Cdtds {1.0 / sqrt(2.0)};
 public:
     RickerWaveletSource(){};
     ~RickerWaveletSource(){};

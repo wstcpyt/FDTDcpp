@@ -4,17 +4,12 @@
 
 #ifndef FDTDCPP_SOURCE_H
 #define FDTDCPP_SOURCE_H
+
+#include <vector>
 class Source
 {
 public:
-    Source();
-    ~Source();
-    double addSource(const int time) const{
-        return 1.0;
-    };
-
-private:
-
+    virtual ~Source(){};
 };
 
 #endif //FDTDCPP_SOURCE_H

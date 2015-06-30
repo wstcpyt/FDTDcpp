@@ -11,8 +11,8 @@
 class Boundary {
     Structure structure;
     std::vector<double> permittivity;
-    double ezOldLeft = 0.0;
-    double ezOldRight = 0.0;
+    double ezOldLeft{0.0};
+    double ezOldRight{0.0};
 public:
     Boundary();
     ~Boundary(){};
