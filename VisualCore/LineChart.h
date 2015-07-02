@@ -8,6 +8,6 @@ class LineChart{
 public:
     LineChart(){};
     ~LineChart(){};
-    void drawchart(std::vector<double>& lineChartVector);
+    void drawchart(std::vector<double>& lineChartVector, const int index);
 };
 #endif //FDTDCPP_LINECHART_H

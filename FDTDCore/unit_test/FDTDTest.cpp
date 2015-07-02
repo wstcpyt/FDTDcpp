@@ -25,7 +25,7 @@ TEST_F(FDTDTest, FDTDrunsimulation){
 }
 
 TEST_F(FDTDTest, FDTDLineChartVector){
-    ASSERT_THAT(fdtd.getlineChartVector().size(), MAXTIME);
+    ASSERT_THAT(fdtd.getlineChartVector().size(), STRUCTURE_SIZE);
 }
 
 

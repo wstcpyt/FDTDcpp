@@ -32,6 +32,4 @@ void FDTD2DTMz::runSimulation() {
             colorMap.drawchart(waterFallVector, time/10);
         }
     }
-    //gifanimate.drawchart();
-
 }

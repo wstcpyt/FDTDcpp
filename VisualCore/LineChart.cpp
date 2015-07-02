@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <vector>
 #include "LineChart.h"
-void LineChart::drawchart(std::vector<double>& lineChartVector) {
+void LineChart::drawchart(std::vector<double>& lineChartVector, const int index) {
     unsigned long num_points = lineChartVector.size();
     int i;
     std::vector<double> xvals (num_points, 0.0);
@@ -23,8 +23,11 @@ void LineChart::drawchart(std::vector<double>& lineChartVector) {
     {
         fprintf(temp, "%lf %lf \n", xvals[i], lineChartVector[i]); //Write the data to a temporary file
     }
-    fprintf(gnuplotPipe, "set title \"Electric Field vs Time Step at 1 Grid Point\" \n"); //Send commands to gnuplot one by one.
-    fprintf(gnuplotPipe, "plot 'data.temp' \n");
+    fprintf(gnuplotPipe, "set term png \n");
+    fprintf(gnuplotPipe, "set output \"/Users/yutongpang/fdtdplot/fdtdplot-%d.png\" \n", index);
+    fprintf(gnuplotPipe, "set title \"Electric Field vs Time Step\" \n"); //Send commands to gnuplot one by one.
+    fprintf(gnuplotPipe, "set yrange [-0.6:1] \n");
+    fprintf(gnuplotPipe, "plot 'data.temp' with lines \n");
     pclose(gnuplotPipe);
     fclose(temp);
 }

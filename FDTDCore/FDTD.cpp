@@ -3,18 +3,18 @@
 //
 
 #include "FDTD.h"
-#include "SourceCore/AdditiveSource.h"
 #include "VisualCore/ColorMap.h"
 FDTD::FDTD() {
     Ez.assign(STRUCTURE_SIZE, 0.0);
     Hy.assign(STRUCTURE_SIZE - 1, 0.0);
-    lineChartVector.assign(MAXTIME, 0.0);
+    lineChartVector.assign(STRUCTURE_SIZE, 0.0);
     waterFallVector.assign(STRUCTURE_SIZE, std::vector<double>(MAXTIME));
 }
 
 
 void FDTD::runSimulation(){
     ColorMap colorMap;
+    //LineChart lineChart;
     for (time = 0; time < MAXTIME; time++){
         updateMagneticPart(time);
         boundary.addMagneticTFSF(time, SOURCEPOSITION, Hy);
@@ -24,7 +24,6 @@ void FDTD::runSimulation(){
         for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
             waterFallVector[gridpoint][time] = Ez[gridpoint];
         }
-        lineChartVector[time] = Ez[50];
     }
     colorMap.drawchart(waterFallVector, 1);
 }
