@@ -26,7 +26,7 @@ void FDTD::runSimulation(){
         }
         lineChartVector[time] = Ez[50];
     }
-    colorMap.drawchart(waterFallVector);
+    colorMap.drawchart(waterFallVector, 1);
 }
 
 void FDTD::updateMagneticPart(const int &time) {

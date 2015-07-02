@@ -10,6 +10,6 @@ class ColorMap{
 public:
     ColorMap(){};
     ~ColorMap(){};
-    void drawchart(std::vector<std::vector<double>>& ColorMapVector);
+    void drawchart(std::vector<std::vector<double>>& ColorMapVector, const int index);
 };
 #endif //FDTDCPP_COLORMAP_H

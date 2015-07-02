@@ -1,2 +1,2 @@
-add_gmock_test(BoundaryTest BoundaryTEST.cpp)
+add_gmock_test(BoundaryTest BoundaryTEST.cpp TFSFTMzTEST.cpp)
 target_link_libraries(BoundaryTest boundaryCore)

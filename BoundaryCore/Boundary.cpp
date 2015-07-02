@@ -10,7 +10,7 @@ Boundary::Boundary() {
 }
 
 void Boundary::addMagteticABC(std::vector<double>& HGrid_y) const {
-    unsigned long size = HGrid_y.size();
+    size_t size = HGrid_y.size();
     HGrid_y[size - 1] = HGrid_y[size - 2];
 }
 
@@ -31,7 +31,7 @@ void Boundary::addElectricFirstABC(std::vector<double> &EGrid_z)  {
     EGrid_z[0] =  ezOldLeft + updateCpattern(1 / (sqrt( permittivity[0]) )) * (EGrid_z[1] - EGrid_z[0]);
     ezOldLeft = EGrid_z[1];
     /* ABC for right side of grid */
-    unsigned long size = EGrid_z.size();
+    size_t size = EGrid_z.size();
     EGrid_z[size - 1] = ezOldRight + updateCpattern(1 / (sqrt( permittivity[size - 1]) )) * (EGrid_z[size - 2] - EGrid_z[size - 1]);
     ezOldRight = EGrid_z[size - 2];
 }

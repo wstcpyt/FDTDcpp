@@ -4,6 +4,7 @@
 
 #include "FDTD_2D_TMz.h"
 #include "VisualCore/ColorMap.h"
+#include "VisualCore/Gifanimate.h"
 FDTD2DTMz::FDTD2DTMz() {
     Ez.assign(STRUCTURE_SIZE_X, std::vector<double> (STRUCTURE_SIZE_Y, 0.0));
     Hx.assign(STRUCTURE_SIZE_X, std::vector<double> (STRUCTURE_SIZE_Y - 1, 0.0));
@@ -13,6 +14,7 @@ FDTD2DTMz::FDTD2DTMz() {
 }
 
 void FDTD2DTMz::runSimulation() {
+    Gifanimate gifanimate;
     ColorMap colorMap;
     int time;
     int xgridpoint;
@@ -21,14 +23,15 @@ void FDTD2DTMz::runSimulation() {
         emField2DTMz.updateMagneticField(Ez, Hx, Hy);
         emField2DTMz.updateElectricField(Ez, Hx, Hy);
         rickerWaveletSource.addRickerWaveletSource(Ez, STRUCTURE_SIZE_X / 2, STRUCTURE_SIZE_Y / 2, time, 0.0);
-        if (time == 110){
+        if (time == 30){
             for (ygridpoint = 0; ygridpoint < STRUCTURE_SIZE_Y; ygridpoint++){
                     for (xgridpoint = 0; xgridpoint < STRUCTURE_SIZE_X; xgridpoint++){
                     waterFallVector[xgridpoint][ygridpoint] = Ez[xgridpoint][ygridpoint];
                 }
             }
+            colorMap.drawchart(waterFallVector, time/10);
         }
     }
-    colorMap.drawchart(waterFallVector);
+    //gifanimate.drawchart();
 
 }

@@ -9,7 +9,7 @@ EMField::EMField() {
 }
 
 void EMField::updateElectricField(std::vector<double> &Ez, std::vector<double> &Hy) const {
-    unsigned long gridsize = Ez.size();
+    size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 1; gridpoint < gridsize - 1; gridpoint++){
         double electricUpdateC_E = getElectricUpdateC_E(gridpoint);
@@ -19,7 +19,7 @@ void EMField::updateElectricField(std::vector<double> &Ez, std::vector<double> &
 }
 
 void EMField::updateMagneticField(std::vector<double> &Ez, std::vector<double> &Hy) const {
-    unsigned long gridsize = Ez.size();
+    size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 0; gridpoint < gridsize - 1; gridpoint++){
         double magneticUpdateC_H = getMagneticUpdateC_H(gridpoint);
