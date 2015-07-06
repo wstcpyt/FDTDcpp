@@ -21,6 +21,7 @@ add_subdirectory(FDTDCore)
 add_subdirectory(VisualCore)
 add_subdirectory(BoundaryCore)
 add_subdirectory(StructureCore)
+add_subdirectory(CommonCore)
 
 
 #link libraries

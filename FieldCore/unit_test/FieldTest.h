@@ -4,5 +4,5 @@
 
 #ifndef FDTDCPP_FIELDTEST_H
 #define FDTDCPP_FIELDTEST_H
-
+#include "constant.h"
 #endif //FDTDCPP_FIELDTEST_H

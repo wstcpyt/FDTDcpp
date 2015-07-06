@@ -4,6 +4,9 @@
 
 #include "FDTD.h"
 #include "VisualCore/ColorMap.h"
+#include <iostream>
+#include <CommonCore/Time.h>
+
 FDTD::FDTD() {
     Ez.assign(STRUCTURE_SIZE, 0.0);
     Hy.assign(STRUCTURE_SIZE - 1, 0.0);
@@ -19,7 +22,9 @@ void FDTD::runSimulation(){
         updateMagneticPart(time);
         boundary.addMagneticTFSF(time, SOURCEPOSITION, Hy);
         boundary.addElectricTFSF(time, SOURCEPOSITION, Ez);
+        double start = get_time();
         updateElectricPart(time);
+        std::cerr << get_time() - start << std::endl;
         int gridpoint;
         for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
             waterFallVector[gridpoint][time] = Ez[gridpoint];
@@ -29,10 +34,10 @@ void FDTD::runSimulation(){
 }
 
 void FDTD::updateMagneticPart(const int &time) {
-    emField.updateMagneticField(Ez, Hy);
+    emField1DP.updateMagneticField(Ez, Hy);
 }
 
 void FDTD::updateElectricPart(const int &time) {
-    emField.updateElectricField(Ez, Hy);
+    emField1DP.updateElectricField(Ez, Hy);
     boundary.addElectricFirstABC(Ez);
 }

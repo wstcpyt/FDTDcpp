@@ -5,7 +5,6 @@
 #include <gmock/gmock.h>
 #include "FieldCore/EMField.h"
 #include "FieldCore/EMField_2D_TMz.h"
-#include "constant.h"
 using namespace testing;
 #define SIZE 200
 
