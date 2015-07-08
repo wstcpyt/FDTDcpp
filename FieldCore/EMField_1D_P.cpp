@@ -17,8 +17,8 @@ void EMField1DP::updateElectricField(std::vector<double> &Ez, std::vector<double
 void EMField1DP::updateElectricFieldthread(std::vector<double> &Ez, std::vector<double> &Hy, const int indexstart, const int indexend) {
     int gridpoint;
     for(gridpoint = indexstart; gridpoint < indexend; gridpoint++){
-        double electricUpdateC_E = getElectricUpdateC_E(gridpoint);
-        double electricUpdateC_H = getElectricUpdateC_H(gridpoint);
+        double electricUpdateC_E = getCeze(gridpoint);
+        double electricUpdateC_H = getCezh(gridpoint);
         Ez[gridpoint] =  electricUpdateC_E * Ez[gridpoint] + electricUpdateC_H * (Hy[gridpoint] - Hy[gridpoint - 1]) ;
     }
 }

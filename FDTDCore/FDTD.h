@@ -16,8 +16,6 @@ class FDTD{
     int time;
     EMField1DP emField1DP;
     EMField emField;
-    std::vector<double> Ez;
-    std::vector<double> Hy;
     std::vector<double> lineChartVector;
     std::vector<std::vector<double>> waterFallVector;
     Boundary boundary;
@@ -25,12 +23,6 @@ public:
     FDTD();
     ~FDTD(){};
     void runSimulation();
-    const std::vector<double> &getEz() const {
-        return Ez;
-    }
-    const std::vector<double> &getHy() const {
-        return Hy;
-    }
     const std::vector<double> &getlineChartVector() const {
         return lineChartVector;
     }

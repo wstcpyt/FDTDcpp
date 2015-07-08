@@ -12,8 +12,8 @@ void EMField::updateElectricField() {
     size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 1; gridpoint < gridsize - 1; gridpoint++){
-        double electricUpdateC_E = getElectricUpdateC_E(gridpoint);
-        double electricUpdateC_H = getElectricUpdateC_H(gridpoint);
+        double electricUpdateC_E = getCeze(gridpoint);
+        double electricUpdateC_H = getCezh(gridpoint);
         Ez[gridpoint] =  electricUpdateC_E * Ez[gridpoint] + electricUpdateC_H * (Hy[gridpoint] - Hy[gridpoint - 1]) ;
     }
 }
@@ -22,24 +22,24 @@ void EMField::updateMagneticField() {
     size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 0; gridpoint < gridsize - 1; gridpoint++){
-        double magneticUpdateC_H = getMagneticUpdateC_H(gridpoint);
-        double magneticUpdateC_E = getMagneticUpdateC_E(gridpoint);
+        double magneticUpdateC_H = getChyh(gridpoint);
+        double magneticUpdateC_E = getChye(gridpoint);
         Hy[gridpoint] = magneticUpdateC_H * Hy[gridpoint] + magneticUpdateC_E * (Ez[gridpoint + 1] - Ez[gridpoint]);
     }
 }
 
-const double EMField::getElectricUpdateC_E(const int gridpoint) const {
+const double EMField::getCeze(const int gridpoint) const {
     return (1.0- structure.loss[gridpoint])/(1.0 + structure.loss[gridpoint]);
 }
 
-const double EMField::getElectricUpdateC_H(const int gridpoint) const {
+const double EMField::getCezh(const int gridpoint) const {
     return IMP0 / structure.permittivity[gridpoint]/ (1.0 + structure.loss[gridpoint]);
 }
 
-const double EMField::getMagneticUpdateC_H(const int gridpoint) const {
+const double EMField::getChyh(const int gridpoint) const {
     return (1.0- structure.loss[gridpoint])/(1.0 + structure.loss[gridpoint]);
 }
 
-const double EMField::getMagneticUpdateC_E(const int gridpoint) const {
+const double EMField::getChye(const int gridpoint) const {
     return 1.0 / IMP0 / (1.0 + structure.loss[gridpoint]);
 }

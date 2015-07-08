@@ -11,7 +11,7 @@
 class EMField2DTMz {
     const double Cdtds {1.0 / sqrt(2.0)};
 public:
-    EMField2DTMz() { };
+    EMField2DTMz(){};
     ~EMField2DTMz() { };
 
     void updateMagneticField(std::vector<std::vector<double>> &Ez, std::vector<std::vector<double>> &Hx,

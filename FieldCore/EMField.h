@@ -12,10 +12,10 @@ protected:
     Structure structure;
     std::vector<double> Ez;
     std::vector<double> Hy;
-    const double getElectricUpdateC_E(const int gridpoint) const;
-    const double getElectricUpdateC_H(const int gridpoint) const;
-    const double getMagneticUpdateC_E(const int gridpoint) const;
-    const double getMagneticUpdateC_H(const int gridpoint) const;
+    const double getCeze(const int gridpoint) const;
+    const double getCezh(const int gridpoint) const;
+    const double getChyh(const int gridpoint) const;
+    const double getChye(const int gridpoint) const;
 public:
     EMField();
     ~EMField(){};
