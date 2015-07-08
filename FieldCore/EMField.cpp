@@ -6,9 +6,11 @@
 EMField::EMField() {
     permittivity = structure.getPermittivity();
     loss = structure.getLoss();
+    Ez.assign(STRUCTURE_SIZE, 0.0);
+    Hy.assign(STRUCTURE_SIZE - 1, 0.0);
 }
 
-void EMField::updateElectricField(std::vector<double> &Ez, std::vector<double> &Hy) const {
+void EMField::updateElectricField() {
     size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 1; gridpoint < gridsize - 1; gridpoint++){
@@ -18,7 +20,7 @@ void EMField::updateElectricField(std::vector<double> &Ez, std::vector<double> &
     }
 }
 
-void EMField::updateMagneticField(std::vector<double> &Ez, std::vector<double> &Hy) const {
+void EMField::updateMagneticField() {
     size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 0; gridpoint < gridsize - 1; gridpoint++){

@@ -12,6 +12,8 @@ protected:
     Structure structure;
     std::vector<double> permittivity;
     std::vector<double> loss;
+    std::vector<double> Ez;
+    std::vector<double> Hy;
     const double getElectricUpdateC_E(const int gridpoint) const;
     const double getElectricUpdateC_H(const int gridpoint) const;
     const double getMagneticUpdateC_E(const int gridpoint) const;
@@ -19,8 +21,8 @@ protected:
 public:
     EMField();
     ~EMField(){};
-    virtual void updateElectricField(std::vector<double> &Ez, std::vector<double> &Hy) const;
-    virtual void updateMagneticField(std::vector<double> &Ez, std::vector<double> &Hy) const;
+    virtual void updateElectricField();
+    virtual void updateMagneticField();
     const std::vector<double> &getPermittivity() const {
         return permittivity;
     }
