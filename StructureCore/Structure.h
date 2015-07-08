@@ -12,6 +12,8 @@ class Structure{
 public:
     Structure();
     ~Structure(){};
+    friend class EMField;
+    friend class Boundary;
     const std::vector<double> &getPermittivity() const {
         return permittivity;
     }

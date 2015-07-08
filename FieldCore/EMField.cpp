@@ -4,8 +4,6 @@
 
 #include "EMField.h"
 EMField::EMField() {
-    permittivity = structure.getPermittivity();
-    loss = structure.getLoss();
     Ez.assign(STRUCTURE_SIZE, 0.0);
     Hy.assign(STRUCTURE_SIZE - 1, 0.0);
 }
@@ -31,17 +29,17 @@ void EMField::updateMagneticField() {
 }
 
 const double EMField::getElectricUpdateC_E(const int gridpoint) const {
-    return (1.0- loss[gridpoint])/(1.0 + loss[gridpoint]);
+    return (1.0- structure.loss[gridpoint])/(1.0 + structure.loss[gridpoint]);
 }
 
 const double EMField::getElectricUpdateC_H(const int gridpoint) const {
-    return IMP0 / permittivity[gridpoint]/ (1.0 + loss[gridpoint]);
+    return IMP0 / structure.permittivity[gridpoint]/ (1.0 + structure.loss[gridpoint]);
 }
 
 const double EMField::getMagneticUpdateC_H(const int gridpoint) const {
-    return (1.0- loss[gridpoint])/(1.0 + loss[gridpoint]);
+    return (1.0- structure.loss[gridpoint])/(1.0 + structure.loss[gridpoint]);
 }
 
 const double EMField::getMagneticUpdateC_E(const int gridpoint) const {
-    return 1.0 / IMP0 / (1.0 + loss[gridpoint]);
+    return 1.0 / IMP0 / (1.0 + structure.loss[gridpoint]);
 }

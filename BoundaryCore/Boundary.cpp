@@ -6,34 +6,33 @@
 #include <math.h>
 
 Boundary::Boundary() {
-    permittivity = structure.getPermittivity();
 }
 
-void Boundary::addMagteticABC(std::vector<double>& HGrid_y) const {
-    size_t size = HGrid_y.size();
-    HGrid_y[size - 1] = HGrid_y[size - 2];
+void Boundary::addMagteticABC(EMField& emField) const {
+    size_t size = emField.Hy.size();
+    emField.Hy[size - 1] = emField.Hy[size - 2];
 }
 
-void Boundary::addElectricABC(std::vector<double> &EGrid_z) const {
-    EGrid_z[0] = EGrid_z[1];
+void Boundary::addElectricABC(EMField& emField) const {
+    emField.Ez[0] = emField.Ez[1];
 }
 
-void Boundary::addMagneticTFSF(const int &time, const int &sourcelocation, std::vector<double> &HGrid_y) const {
-    HGrid_y[sourcelocation - 1] -= exp(-(time - 30.) * (time - 30.) / 100.) / IMP0;
+void Boundary::addMagneticTFSF(const int &time, const int &sourcelocation, EMField& emField) const {
+    emField.Hy[sourcelocation - 1] -= exp(-(time - 30.) * (time - 30.) / 100.) / IMP0;
 }
 
-void Boundary::addElectricTFSF(const int &time, const int &sourcelocation, std::vector<double> &EGrid_z) const {
-    EGrid_z[sourcelocation] += exp(-(time + 0.5 -(-0.5) -30.)* (time + 0.5 - (-0.5) -30.) / 100.);
+void Boundary::addElectricTFSF(const int &time, const int &sourcelocation, EMField& emField) const {
+    emField.Ez[sourcelocation] += exp(-(time + 0.5 -(-0.5) -30.)* (time + 0.5 - (-0.5) -30.) / 100.);
 }
 
-void Boundary::addElectricFirstABC(std::vector<double> &EGrid_z)  {
+void Boundary::addElectricFirstABC(EMField& emField)  {
     /* ABC for left side of grid */
-    EGrid_z[0] =  ezOldLeft + updateCpattern(1 / (sqrt( permittivity[0]) )) * (EGrid_z[1] - EGrid_z[0]);
-    ezOldLeft = EGrid_z[1];
+    emField.Ez[0] =  ezOldLeft + updateCpattern(1 / (sqrt( structure.permittivity[0]) )) * (emField.Ez[1] - emField.Ez[0]);
+    ezOldLeft = emField.Ez[1];
     /* ABC for right side of grid */
-    size_t size = EGrid_z.size();
-    EGrid_z[size - 1] = ezOldRight + updateCpattern(1 / (sqrt( permittivity[size - 1]) )) * (EGrid_z[size - 2] - EGrid_z[size - 1]);
-    ezOldRight = EGrid_z[size - 2];
+    size_t size = emField.Ez.size();
+    emField.Ez[size - 1] = ezOldRight + updateCpattern(1 / (sqrt( structure.permittivity[size - 1]) )) * (emField.Ez[size - 2] - emField.Ez[size - 1]);
+    ezOldRight = emField.Ez[size - 2];
 }
 
 double Boundary::updateCpattern(const double parameter) const {

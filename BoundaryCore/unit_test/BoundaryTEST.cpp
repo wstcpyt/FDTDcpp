@@ -9,36 +9,39 @@ using namespace testing;
 class BoundaryTest: public Test{
 public:
     Boundary boundary;
+    double testupdateCpattern(const double parameter){
+        return boundary.updateCpattern(parameter);
+    }
+
 };
 
 TEST_F(BoundaryTest, addMagteticABCBoundaryCondition){
-    std::vector<double> HGrid_y =  {1, 2, 3, 4 ,5};
-    boundary.addMagteticABC(HGrid_y);
-    ASSERT_THAT(HGrid_y[4], 4);
+    EMField emField;
+    boundary.addMagteticABC(emField);
 }
 TEST_F(BoundaryTest, addElectricABCBoundaryCondition){
-    std::vector<double> EGrid_z =  {1, 2, 3, 4 ,5};
-    boundary.addElectricABC(EGrid_z);
-    ASSERT_THAT(EGrid_z[0], 2);
+    EMField emField;
+    boundary.addElectricABC(emField);
 }
 
 TEST_F(BoundaryTest, addMagneticTFSFcorrection){
-    std::vector<double> HGrid_y =  {1, 2, 3, 4 ,5};
-    boundary.addMagneticTFSF(30, 2, HGrid_y);
-    ASSERT_THAT(HGrid_y[1], 2 - 1/IMP0);
+    EMField emField;
+    boundary.addMagneticTFSF(30, 2, emField);
+    ASSERT_THAT(emField.getHy()[1], -1/IMP0);
 }
 
 TEST_F(BoundaryTest, addElectricTFSFcorrection){
-    std::vector<double> EGrid_z =  {1, 2, 3, 4 ,5};
-    boundary.addElectricTFSF(29, 2, EGrid_z);
-    ASSERT_THAT(EGrid_z[2], 3 + 1);
+    EMField emField;
+    boundary.addElectricTFSF(29, 2, emField);
+    ASSERT_THAT(emField.getEz()[2], 1);
 }
 
 TEST_F(BoundaryTest, addELectricFirstABC){
-    std::vector<double> EGrid_z =  {1, 2, 3, 4 ,5};
-    boundary.addElectricFirstABC(EGrid_z);
+    EMField emField;
+    boundary.addElectricFirstABC(emField);
 }
 
-TEST_F(BoundaryTest, GetPermittivity){
-    ASSERT_THAT(boundary.getPermittivity().size(), STRUCTURE_SIZE);
-}
+TEST_F(BoundaryTest, updateCpattern){
+    ASSERT_THAT(BoundaryTest::testupdateCpattern(1), 0);
+    ASSERT_THAT(BoundaryTest::testupdateCpattern(3), 0.5);
+};

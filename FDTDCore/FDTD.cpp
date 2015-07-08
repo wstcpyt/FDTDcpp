@@ -8,8 +8,6 @@
 #include <CommonCore/Time.h>
 
 FDTD::FDTD() {
-    Ez.assign(STRUCTURE_SIZE, 0.0);
-    Hy.assign(STRUCTURE_SIZE - 1, 0.0);
     lineChartVector.assign(STRUCTURE_SIZE, 0.0);
     waterFallVector.assign(STRUCTURE_SIZE, std::vector<double>(MAXTIME));
 }
@@ -20,14 +18,14 @@ void FDTD::runSimulation(){
     //LineChart lineChart;
     for (time = 0; time < MAXTIME; time++){
         updateMagneticPart(time);
-        boundary.addMagneticTFSF(time, SOURCEPOSITION, Hy);
-        boundary.addElectricTFSF(time, SOURCEPOSITION, Ez);
+        boundary.addMagneticTFSF(time, SOURCEPOSITION, emField);
+        boundary.addElectricTFSF(time, SOURCEPOSITION, emField);
         double start = get_time();
         updateElectricPart(time);
         std::cerr << get_time() - start << std::endl;
         int gridpoint;
         for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
-            waterFallVector[gridpoint][time] = Ez[gridpoint];
+            waterFallVector[gridpoint][time] = emField.getEz()[gridpoint];
         }
     }
     colorMap.drawchart(waterFallVector, 1);
@@ -39,5 +37,5 @@ void FDTD::updateMagneticPart(const int &time) {
 
 void FDTD::updateElectricPart(const int &time) {
     emField.updateElectricField();
-    boundary.addElectricFirstABC(Ez);
+    boundary.addElectricFirstABC(emField);
 }

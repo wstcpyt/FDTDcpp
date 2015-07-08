@@ -10,8 +10,6 @@ class EMField
 {
 protected:
     Structure structure;
-    std::vector<double> permittivity;
-    std::vector<double> loss;
     std::vector<double> Ez;
     std::vector<double> Hy;
     const double getElectricUpdateC_E(const int gridpoint) const;
@@ -21,13 +19,16 @@ protected:
 public:
     EMField();
     ~EMField(){};
+    friend class Boundary;
     virtual void updateElectricField();
     virtual void updateMagneticField();
-    const std::vector<double> &getPermittivity() const {
-        return permittivity;
+
+    const std::vector<double> &getEz() const {
+        return Ez;
     }
-    const std::vector<double> &getLoss() const {
-        return loss;
+
+    const std::vector<double> &getHy() const {
+        return Hy;
     }
 };
 #endif //FDTDCPP_FIELD_H

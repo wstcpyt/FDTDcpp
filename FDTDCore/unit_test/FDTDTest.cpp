@@ -12,13 +12,6 @@ public:
     FDTD2DTMz fdtd2DTMz;
 };
 
-TEST_F(FDTDTest, FDTDsimulationhasEGrid){
-    ASSERT_THAT(fdtd.getEz().size(), STRUCTURE_SIZE);
-}
-
-TEST_F(FDTDTest, FDTDsimulatiohasHGrid){
-    ASSERT_THAT(fdtd.getHy().size(), STRUCTURE_SIZE - 1);
-}
 
 TEST_F(FDTDTest, FDTDrunsimulation){
     fdtd.runSimulation();
@@ -27,7 +20,6 @@ TEST_F(FDTDTest, FDTDrunsimulation){
 TEST_F(FDTDTest, FDTDLineChartVector){
     ASSERT_THAT(fdtd.getlineChartVector().size(), STRUCTURE_SIZE);
 }
-
 
 TEST_F(FDTDTest, FDTD2DTMzsimulationhasEGrid){
     ASSERT_THAT(fdtd2DTMz.getEz().size(), STRUCTURE_SIZE_X);

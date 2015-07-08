@@ -22,13 +22,7 @@ TEST_F(FieldTest, EMfieldUpdateMagneticField){
     emField.updateMagneticField();
 }
 
-TEST_F(FieldTest, EMfieldGetPermittivity){
-    ASSERT_THAT(emField.getPermittivity().size(), STRUCTURE_SIZE);
-}
 
-TEST_F(FieldTest, EMfieldGetLoss){
-    ASSERT_THAT(emField.getLoss().size(), STRUCTURE_SIZE);
-}
 
 TEST_F(FieldTest, EMField2DTMzUpdateMagneticField){
     std::vector<std::vector<double>> Ez(200, std::vector<double>(200, 0.0));
