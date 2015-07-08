@@ -34,10 +34,10 @@ void FDTD::runSimulation(){
 }
 
 void FDTD::updateMagneticPart(const int &time) {
-    emField1DP.updateMagneticField(Ez, Hy);
+    emField.updateMagneticField(Ez, Hy);
 }
 
 void FDTD::updateElectricPart(const int &time) {
-    emField1DP.updateElectricField(Ez, Hy);
+    emField.updateElectricField(Ez, Hy);
     boundary.addElectricFirstABC(Ez);
 }

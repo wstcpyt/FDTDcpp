@@ -8,7 +8,9 @@
 #include "constant.h"
 #include <vector>
 #include "StructureCore/Structure.h"
+#include "FieldCore/EMField.h"
 class Boundary {
+    EMField emField;
     Structure structure;
     std::vector<double> permittivity;
     double ezOldLeft{0.0};

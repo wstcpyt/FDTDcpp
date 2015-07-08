@@ -14,8 +14,8 @@
 
 class FDTD{
     int time;
-    EMField1DP emField1DP = EMField1DP::EMField1DP();
-    EMField emField = EMField::EMField();
+    EMField1DP emField1DP;
+    EMField emField;
     std::vector<double> Ez;
     std::vector<double> Hy;
     std::vector<double> lineChartVector;
