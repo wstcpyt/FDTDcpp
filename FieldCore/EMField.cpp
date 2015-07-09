@@ -3,9 +3,7 @@
 //
 
 #include "EMField.h"
-EMField::EMField() {
-    Ez.assign(STRUCTURE_SIZE, 0.0);
-    Hy.assign(STRUCTURE_SIZE - 1, 0.0);
+EMField::EMField() : EMFieldabstract(1.0) {
 }
 
 void EMField::updateElectricField() {
@@ -26,20 +24,4 @@ void EMField::updateMagneticField() {
         double magneticUpdateC_E = getChye(gridpoint);
         Hy[gridpoint] = magneticUpdateC_H * Hy[gridpoint] + magneticUpdateC_E * (Ez[gridpoint + 1] - Ez[gridpoint]);
     }
-}
-
-const double EMField::getCeze(const int gridpoint) const {
-    return (1.0- structure.loss[gridpoint])/(1.0 + structure.loss[gridpoint]);
-}
-
-const double EMField::getCezh(const int gridpoint) const {
-    return IMP0 / structure.permittivity[gridpoint]/ (1.0 + structure.loss[gridpoint]);
-}
-
-const double EMField::getChyh(const int gridpoint) const {
-    return (1.0- structure.loss[gridpoint])/(1.0 + structure.loss[gridpoint]);
-}
-
-const double EMField::getChye(const int gridpoint) const {
-    return 1.0 / IMP0 / (1.0 + structure.loss[gridpoint]);
 }

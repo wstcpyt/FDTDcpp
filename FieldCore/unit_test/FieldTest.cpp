@@ -24,16 +24,3 @@ TEST_F(FieldTest, EMfieldUpdateMagneticField){
 
 
 
-TEST_F(FieldTest, EMField2DTMzUpdateMagneticField){
-    std::vector<std::vector<double>> Ez(200, std::vector<double>(200, 0.0));
-    std::vector<std::vector<double>> Hx(200, std::vector<double>(200, 0.0));
-    std::vector<std::vector<double>> Hy(200, std::vector<double>(200, 0.0));
-    emField2DTMz.updateMagneticField(Ez, Hx, Hy);
-}
-
-TEST_F(FieldTest, EMField2DTMzUpdateElectricField){
-    std::vector<std::vector<double>> Ez(200, std::vector<double>(200, 0.0));
-    std::vector<std::vector<double>> Hx(200, std::vector<double>(200, 0.0));
-    std::vector<std::vector<double>> Hy(200, std::vector<double>(200, 0.0));
-    emField2DTMz.updateElectricField(Ez, Hx, Hy);
-}

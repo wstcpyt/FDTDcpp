@@ -8,25 +8,28 @@
 #include <vector>
 #include "math.h"
 #include "constant.h"
-class EMField2DTMz {
-    const double Cdtds {1.0 / sqrt(2.0)};
+#include "FieldCore/EMField.h"
+class EMField2DTMz: public EMFieldabstract {
 public:
-    EMField2DTMz(){};
-    ~EMField2DTMz() { };
+    friend class RickerWaveletSource;
+    EMField2DTMz();
 
-    void updateMagneticField(std::vector<std::vector<double>> &Ez, std::vector<std::vector<double>> &Hx,
-                             std::vector<std::vector<double >> &Hy) const;
+    virtual ~EMField2DTMz() { };
 
-    void updateElectricField(std::vector<std::vector<double>> &Ez, std::vector<std::vector<double>> &Hx,
-                             std::vector<std::vector<double >> &Hy) const;
+    virtual void updateMagneticField();
+
+    virtual void updateElectricField();
+
+    const std::vector<std::vector<double>> &get2DEz() const {
+        return Ez;
+    }
 
 private:
-    double getChxh() const;
-    double getChxe() const;
-    double getChyh() const;
-    double getChye() const;
-    double getCezh() const;
-    double getCeze() const;
+    std::vector<std::vector<double>> Ez;
+    std::vector<std::vector<double>> Hx;
+    std::vector<std::vector<double>> Hy;
+    double getChxh(const int gridpoint) const;
+    double getChxe(const int gridpoint) const;
 };
 
 #endif //FDTDCPP_EMFIELD_2D_TMZ_H

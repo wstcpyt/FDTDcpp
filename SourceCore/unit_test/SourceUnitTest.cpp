@@ -26,8 +26,3 @@ TEST_F(SourceType, AdditiveSource){
     additiveSource.addSource(30, Ez, 50);
     ASSERT_THAT(Ez[50], 1);
 }
-
-TEST_F(SourceType, rickerWaveletSource){
-    std::vector<std::vector<double>> Ez(200, std::vector<double>(200, 0.0));
-    rickerWaveletSource.addRickerWaveletSource(Ez, 1, 1, 1.0, 0.0 );
-}

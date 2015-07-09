@@ -11,9 +11,7 @@
 #include "SourceCore/RickerWaveletSource.h"
 
 class FDTD2DTMz{
-    std::vector<std::vector<double>> Ez;
-    std::vector<std::vector<double>> Hx;
-    std::vector<std::vector<double>> Hy;
+
     EMField2DTMz emField2DTMz;
     RickerWaveletSource rickerWaveletSource;
     std::vector<std::vector<double>> waterFallVector;
@@ -23,16 +21,5 @@ public:
 
     void runSimulation();
 
-    const std::vector<std::vector<double>> &getEz() const {
-        return Ez;
-    }
-
-    const std::vector<std::vector<double>> &getHx() const {
-        return Hx;
-    }
-
-    const std::vector<std::vector<double>> &getHy() const {
-        return Hy;
-    }
 };
 #endif //FDTDCPP_FDTD_2D_TMZ_H

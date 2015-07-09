@@ -6,29 +6,15 @@
 #define FDTDCPP_FIELD_H
 #include <vector>
 #include "StructureCore/Structure.h"
-class EMField
+#include "EMFieldabstract.h"
+class EMField:public EMFieldabstract
 {
 protected:
     Structure structure;
-    std::vector<double> Ez;
-    std::vector<double> Hy;
-    const double getCeze(const int gridpoint) const;
-    const double getCezh(const int gridpoint) const;
-    const double getChyh(const int gridpoint) const;
-    const double getChye(const int gridpoint) const;
 public:
     EMField();
-    ~EMField(){};
-    friend class Boundary;
+    virtual ~EMField(){};
     virtual void updateElectricField();
     virtual void updateMagneticField();
-
-    const std::vector<double> &getEz() const {
-        return Ez;
-    }
-
-    const std::vector<double> &getHy() const {
-        return Hy;
-    }
 };
 #endif //FDTDCPP_FIELD_H
