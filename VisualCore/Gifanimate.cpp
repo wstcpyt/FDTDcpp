@@ -14,7 +14,7 @@ void Gifanimate::drawchart() {
     fprintf(gnuplotPipe, "set xrange [0:4*pi]\n");
     fprintf(gnuplotPipe, "set yrange [-1:1]\n");
     fprintf(gnuplotPipe, "do for [i=0:n]{\n");
-    fprintf(gnuplotPipe, "plot sin(x+i*dt)/(1. + i/12.) w l lw 1.5 title sprintf(\"t=%i\",i)\n");
+    fprintf(gnuplotPipe, "plot sin(x+i*dt)/(1. + i/12.) w l lw 1.5 title sprintf(\"t=%i\",i)\n", 1);
     fprintf(gnuplotPipe, "}\n");
     fprintf(gnuplotPipe, "set output \n");
     pclose(gnuplotPipe);

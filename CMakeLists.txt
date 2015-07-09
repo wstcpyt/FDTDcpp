@@ -9,12 +9,17 @@ BoundaryCore/unit_test/BoundaryTEST.cpp StructureCore/unit_test/StructureTest.cp
 add_executable(FDTDcpp ${SOURCE_FILES} ${TEST_FILES})
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
+find_package( PkgConfig REQUIRED)
+pkg_check_modules( gsl REQUIRED gsl )
+include_directories(${gsl_INCLUDE_DIRS})
+set(GSL ${GSL} ${gsl_LIBRARIES})
+target_link_libraries( FDTDcpp GSL )
+
+
 enable_testing()
 
 include(gmock)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
-#add subdirectories
 add_subdirectory(SourceCore)
 add_subdirectory(FieldCore)
 add_subdirectory(FDTDCore)

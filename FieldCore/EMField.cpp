@@ -10,9 +10,7 @@ void EMField::updateElectricField() {
     size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 1; gridpoint < gridsize - 1; gridpoint++){
-        double electricUpdateC_E = getCeze(gridpoint);
-        double electricUpdateC_H = getCezh(gridpoint);
-        Ez[gridpoint] =  electricUpdateC_E * Ez[gridpoint] + electricUpdateC_H * (Hy[gridpoint] - Hy[gridpoint - 1]) ;
+        Ez[gridpoint] =  getCeze(gridpoint) * Ez[gridpoint] + getCezh(gridpoint) * (Hy[gridpoint] - Hy[gridpoint - 1]) ;
     }
 }
 
@@ -20,8 +18,6 @@ void EMField::updateMagneticField() {
     size_t gridsize = Ez.size();
     int gridpoint;
     for(gridpoint = 0; gridpoint < gridsize - 1; gridpoint++){
-        double magneticUpdateC_H = getChyh(gridpoint);
-        double magneticUpdateC_E = getChye(gridpoint);
-        Hy[gridpoint] = magneticUpdateC_H * Hy[gridpoint] + magneticUpdateC_E * (Ez[gridpoint + 1] - Ez[gridpoint]);
+        Hy[gridpoint] = getChyh(gridpoint) * Hy[gridpoint] + getChye(gridpoint) * (Ez[gridpoint + 1] - Ez[gridpoint]);
     }
 }

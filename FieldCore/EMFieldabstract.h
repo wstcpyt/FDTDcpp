@@ -33,5 +33,9 @@ public:
     virtual const std::vector<double> &getHy() const {
         return Hy;
     }
+
+    double getCdtds() const {
+        return Cdtds;
+    }
 };
 #endif //FDTDCPP_EMFIELDABSTRACT_H

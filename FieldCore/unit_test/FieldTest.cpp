@@ -10,17 +10,42 @@ using namespace testing;
 
 class FieldTest: public Test{
 public:
-    EMField emField = EMField::EMField();
+    EMField emField;
     EMField2DTMz emField2DTMz;
 };
 
-TEST_F(FieldTest, EMfieldUpdateElectricField){
+
+//Test for EMField
+
+TEST_F(FieldTest, EMFieldConstructor){
+    double Cdtds1D = emField.getCdtds();
+    ASSERT_THAT(Cdtds1D, 1.0);
+}
+
+TEST_F(FieldTest, EMFieldupdateElectricField){
     emField.updateElectricField();
 }
 
 TEST_F(FieldTest, EMfieldUpdateMagneticField){
     emField.updateMagneticField();
 }
+
+//Test for EMField_2D_TMz
+
+TEST_F(FieldTest, EMField2DTMzConstructor){
+    double Cdtds2D = emField2DTMz.getCdtds();
+    ASSERT_THAT(Cdtds2D, 1.0 / sqrt(2.0));
+}
+
+TEST_F(FieldTest, EMField2DTMzupdateElectricField){
+    emField2DTMz.updateElectricField();
+}
+
+TEST_F(FieldTest, EMField2DTMzUpdateMagneticField){
+    emField2DTMz.updateMagneticField();
+}
+
+
 
 
 
