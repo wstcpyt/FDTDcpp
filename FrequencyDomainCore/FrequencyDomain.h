@@ -1,0 +1,8 @@
+//
+// Created by yutong pang on 7/10/15.
+//
+
+#ifndef FDTDCPP_FREQUENCYDOMAIN_H
+#define FDTDCPP_FREQUENCYDOMAIN_H
+
+#endif //FDTDCPP_FREQUENCYDOMAIN_H

@@ -27,6 +27,7 @@ add_subdirectory(VisualCore)
 add_subdirectory(BoundaryCore)
 add_subdirectory(StructureCore)
 add_subdirectory(CommonCore)
+add_subdirectory(FrequencyDomainCore)
 
 
 #link libraries
@@ -37,6 +38,7 @@ target_link_libraries(FDTDcpp fdtdCore)
 target_link_libraries(FDTDcpp boundaryCore)
 target_link_libraries(FDTDcpp gmock)
 target_link_libraries(FDTDcpp gtest)
+target_link_libraries(FDTDcpp frequencyDomainCore)
 
 set(CONFIGURED_ONCE TRUE CACHE INTERNAL
     "A flag showing that CMake has configured at least once.")
