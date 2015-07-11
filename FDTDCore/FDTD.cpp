@@ -6,6 +6,7 @@
 #include "VisualCore/ColorMap.h"
 #include <iostream>
 #include <CommonCore/Time.h>
+#include "FrequencyDomainCore/FrequencyDomain.h"
 
 FDTD::FDTD() {
     lineChartVector.assign(STRUCTURE_SIZE, 0.0);
@@ -29,6 +30,7 @@ void FDTD::runSimulation(){
         }
     }
     colorMap.drawchart(waterFallVector, 1);
+    FrequencyDomain frequencyDomain(waterFallVector);
 }
 
 void FDTD::updateMagneticPart(const int &time) {
