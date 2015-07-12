@@ -26,3 +26,7 @@ TEST_F(SourceType, AdditiveSource){
     additiveSource.addSource(30, Ez, 50);
     ASSERT_THAT(Ez[50], 1);
 }
+
+TEST_F(SourceType, rickerWaveletSource_1D){
+    double returnvalue = rickerWaveletSource.addRickerWaveletSource(10, 0);
+}

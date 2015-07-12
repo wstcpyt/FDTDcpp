@@ -16,7 +16,6 @@ FDTD::FDTD() {
 
 void FDTD::runSimulation(){
     ColorMap colorMap;
-    //LineChart lineChart;
     for (time = 0; time < MAXTIME; time++){
         updateMagneticPart(time);
         boundary.addMagneticTFSF(time, SOURCEPOSITION, emField);
@@ -28,9 +27,11 @@ void FDTD::runSimulation(){
         for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
             waterFallVector[gridpoint][time] = emField.getEz()[gridpoint];
         }
+        lineChartVector[time] = emField.getEz()[50];
     }
     colorMap.drawchart(waterFallVector, 1);
     FrequencyDomain frequencyDomain(waterFallVector);
+    frequencyDomain.dotransfer();
 }
 
 void FDTD::updateMagneticPart(const int &time) {

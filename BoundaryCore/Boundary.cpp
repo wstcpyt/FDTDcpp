@@ -18,11 +18,13 @@ void Boundary::addElectricABC(EMField& emField) const {
 }
 
 void Boundary::addMagneticTFSF(const int &time, const int &sourcelocation, EMField& emField) const {
-    emField.Hy[sourcelocation - 1] -= exp(-(time - 30.) * (time - 30.) / 100.) / IMP0;
+    double rickerwaveletsourcevalue = rickerWaveletSource.addRickerWaveletSource(time, 0);
+    emField.Hy[sourcelocation - 1] -= rickerwaveletsourcevalue / IMP0;
 }
 
 void Boundary::addElectricTFSF(const int &time, const int &sourcelocation, EMField& emField) const {
-    emField.Ez[sourcelocation] += exp(-(time + 0.5 -(-0.5) -30.)* (time + 0.5 - (-0.5) -30.) / 100.);
+    double rickerwaveletsourcevalue = rickerWaveletSource.addRickerWaveletSource(time + 0.5, -0.5);
+    emField.Ez[sourcelocation] += rickerwaveletsourcevalue;
 }
 
 void Boundary::addElectricFirstABC(EMField& emField)  {

@@ -8,10 +8,13 @@
 #include <vector>
 #include "StructureCore/Structure.h"
 #include "FieldCore/EMField.h"
+#include "SourceCore/RickerWaveletSource.h"
+
 class Boundary {
     Structure structure;
     double ezOldLeft{0.0};
     double ezOldRight{0.0};
+    RickerWaveletSource rickerWaveletSource;
 public:
     friend class BoundaryTest;
     Boundary();

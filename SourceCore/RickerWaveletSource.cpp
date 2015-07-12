@@ -10,3 +10,10 @@ void RickerWaveletSource::addRickerWaveletSource(const int &positionx, const int
     double updatevalue = (1.0 - 2.0 * arg) * exp(-arg);
     emField2DTMz.Ez[positionx][positiony] = updatevalue;
 }
+
+double RickerWaveletSource::addRickerWaveletSource(const double &time, const double &location) const {
+    double arg = M_PI * ((time - location)/ PPW - 1.0);
+    arg = arg * arg;
+    double updatevalue = (1.0 - 2.0 * arg) * exp(-arg);
+    return updatevalue;
+}
