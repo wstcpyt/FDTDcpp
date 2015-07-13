@@ -14,11 +14,11 @@ Structure::Structure() {
             loss[gridpoint] = 0.0;
         }
         else if (gridpoint < 180) {
-            permittivity[gridpoint] = 4.0;
+            permittivity[gridpoint] = 9.0;
             loss[gridpoint] = 0.0;
         }
         else{
-            permittivity[gridpoint] = 4.0;
+            permittivity[gridpoint] = 9.0;
             loss[gridpoint] = 0.02;
         }
     }

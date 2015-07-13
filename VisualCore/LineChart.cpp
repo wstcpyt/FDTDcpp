@@ -27,7 +27,7 @@ void LineChart::drawchart(std::vector<double>& lineChartVector, const int index)
     //fprintf(gnuplotPipe, "set output \"/Users/yutongpang/fdtdplot/fdtdplot-%d.png\" \n", index);
     fprintf(gnuplotPipe, "set title \"Electric Field vs Time Step\" \n"); //Send commands to gnuplot one by one.
     //fprintf(gnuplotPipe, "set yrange [-1:1] \n");
-    fprintf(gnuplotPipe, "plot 'tempadata.temp'\n");
+    fprintf(gnuplotPipe, "plot 'tempadata.temp' with lines\n");
     fclose(temp);
     pclose(gnuplotPipe);
 }
