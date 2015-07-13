@@ -30,8 +30,8 @@ void FDTD::runSimulation(){
         lineChartVector[time] = emField.getEz()[50];
     }
     colorMap.drawchart(waterFallVector, 1);
-    FrequencyDomain frequencyDomain(waterFallVector);
-    frequencyDomain.dotransfer();
+    FrequencyDomain frequencyDomain(waterFallVector[110]);
+    frequencyDomain.fftreal();
 }
 
 void FDTD::updateMagneticPart(const int &time) {
