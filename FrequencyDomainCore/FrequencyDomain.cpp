@@ -7,7 +7,7 @@
 #include <gsl/gsl_fft_halfcomplex.h>
 #include <stdio.h>
 #include <math.h>
-
+#include <iostream>
 using std::vector;
 using std::unique_ptr;
 
@@ -18,20 +18,19 @@ FrequencyDomain::FrequencyDomain(const vector<double>& timedomainarray): timedom
 }
 
 
-void FrequencyDomain::fftreal() {
+const vector<double> FrequencyDomain::fftrealToIntensity(){
     fft_real_radix2_transform();
     fft_halfcomplex_radix2_unpack();
     transferComplexToIntensity();
-    drawfrequencydomaindata();
+    return intensity;
 }
-
-
 
 void FrequencyDomain::drawfrequencydomaindata(){
     lineChart.drawchart(intensity, 1);
 }
 
 void FrequencyDomain::drawtimedomaindata(){
+    //need to call before fftrealToIntensity
     lineChart.drawchart(timedomainarray, 1);
 }
 
@@ -49,7 +48,10 @@ void FrequencyDomain::transferComplexToIntensity() {
     for (int i=0; i< timedomainsize; i++){
         double real = complex_p[2 * i];
         double image = complex_p[2 * i + 1];
-        double intensityvalue = sqrt(pow(real, 2.0) + pow(image, 2.0));
-        intensity[i] = intensityvalue;
+        intensity[i] = getintensity(real, image);
     }
+}
+
+double FrequencyDomain::getintensity(const double real, const double imag) const {
+    return sqrt(pow(real, 2.0) + pow(imag, 2.0));
 }

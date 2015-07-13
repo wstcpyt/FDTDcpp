@@ -27,11 +27,12 @@ void FDTD::runSimulation(){
         for (gridpoint=0; gridpoint < STRUCTURE_SIZE; gridpoint++){
             waterFallVector[gridpoint][time] = emField.getEz()[gridpoint];
         }
-        lineChartVector[time] = emField.getEz()[50];
     }
     colorMap.drawchart(waterFallVector, 1);
-    FrequencyDomain frequencyDomain(waterFallVector[110]);
-    frequencyDomain.fftreal();
+    FrequencyDomain frequencyDomain(waterFallVector[60]);
+    frequencyDomain.drawtimedomaindata();
+    frequencyDomain.fftrealToIntensity();
+    frequencyDomain.drawfrequencydomaindata();
 }
 
 void FDTD::updateMagneticPart(const int &time) {

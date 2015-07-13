@@ -20,14 +20,27 @@ class FrequencyDomain {
 public:
     FrequencyDomain(const vector<double>& timedomainarray);
     virtual ~FrequencyDomain(){};
-    void fftreal();
+    const vector<double> fftrealToIntensity();
     void drawtimedomaindata();
     void drawfrequencydomaindata();
+
+    const vector<double> &getIntensity() const {
+        return intensity;
+    }
+
+    const vector<double> &getTimedomainarray() const {
+        return timedomainarray;
+    }
+
+    const vector<double> &getComplexpvector() const {
+        return complexpvector;
+    }
+
+private:
     void fft_real_radix2_transform();
     void fft_halfcomplex_radix2_unpack();
     void transferComplexToIntensity();
-
-private:
+    double getintensity(const double real,const double imag) const;
 
 };
 
