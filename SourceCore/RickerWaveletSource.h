@@ -10,7 +10,7 @@
 #include "constant.h"
 #include "FieldCore/EMField_2D_TMz.h"
 #include "FieldCore/EMField.h"
-#define PPW 50
+#define PPW 100
 class RickerWaveletSource{
     const double Cdtds {1.0 / sqrt(2.0)};
 public:

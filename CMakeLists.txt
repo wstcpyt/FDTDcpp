@@ -29,6 +29,7 @@ add_subdirectory(BoundaryCore)
 add_subdirectory(StructureCore)
 add_subdirectory(CommonCore)
 add_subdirectory(FrequencyDomainCore)
+add_subdirectory(GeneticAlgorithmCore)
 
 
 #link libraries

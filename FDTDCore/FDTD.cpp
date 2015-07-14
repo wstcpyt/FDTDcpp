@@ -36,7 +36,7 @@ void FDTD::runSimulation(){
     for (int i =0; i < STRUCTURE_SIZE; i++){
         FrequencyDomain frequencyDomain(waterFallVector[i]);
         auto intensity = frequencyDomain.fftrealToIntensity();
-        structurefield[i] = intensity[10];
+        structurefield[i] = intensity[5];
     }
     lineChart.drawchart(structurefield, 1);
     FrequencyDomain frequencyDomain1(waterFallVector[40]);

@@ -1,0 +1,2 @@
+add_gmock_test(GeneticAlgorithmTest GeneticAlgorithmTest.cpp)
+target_link_libraries(GeneticAlgorithmTest geneticAlgorithm)
