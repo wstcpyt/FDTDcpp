@@ -5,7 +5,7 @@ set(SOURCE_FILES main.cpp)
 
 set(TEST_FILES FieldCore/unit_test/FieldTest.cpp FDTDCore/unit_test/FDTDTest.cpp SourceCore/unit_test/SourceUnitTest.cpp
 BoundaryCore/unit_test/BoundaryTEST.cpp StructureCore/unit_test/StructureTest.cpp BoundaryCore/unit_test/TFSFTMzTEST.cpp
-FrequencyDomainCore/unit_test/FrequencyDomainTest.cpp)
+FrequencyDomainCore/unit_test/FrequencyDomainTest.cpp GeneticAlgorithmCore/unit_test/GeneticAlgorithmTest.cpp)
 
 add_executable(FDTDcpp ${SOURCE_FILES} ${TEST_FILES})
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
@@ -39,6 +39,7 @@ target_link_libraries(FDTDcpp fieldCore)
 target_link_libraries(FDTDcpp fdtdCore)
 target_link_libraries(FDTDcpp boundaryCore)
 target_link_libraries(FDTDcpp frequencyDomainCore)
+target_link_libraries(FDTDcpp geneticAlgorithm)
 target_link_libraries(FDTDcpp gmock)
 target_link_libraries(FDTDcpp gtest)
 

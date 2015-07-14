@@ -10,8 +10,9 @@ using namespace testing;
 
 class FieldTest: public Test{
 public:
-    EMField emField;
-    EMField2DTMz emField2DTMz;
+    Structure structure;
+    EMField emField = EMField::EMField(structure);
+    EMField2DTMz emField2DTMz = EMField2DTMz::EMField2DTMz(structure);
 };
 
 

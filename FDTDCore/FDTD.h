@@ -7,15 +7,14 @@
 
 #include <vector>
 #include "BoundaryCore/Boundary.h"
-#include "FieldCore/EMField_1D_P.h"
 #include "FieldCore/EMField.h"
 #include "constant.h"
 #define SOURCEPOSITION 50
 
 class FDTD{
     int time;
-    EMField1DP emField1DP;
-    EMField emField;
+    Structure structure = Structure::Structure(9, 16);
+    EMField emField = EMField::EMField(structure);
     std::vector<double> lineChartVector;
     std::vector<std::vector<double>> waterFallVector;
     Boundary boundary;

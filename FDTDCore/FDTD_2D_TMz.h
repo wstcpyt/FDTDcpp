@@ -9,10 +9,11 @@
 #include "constant.h"
 #include "FieldCore/EMField_2D_TMz.h"
 #include "SourceCore/RickerWaveletSource.h"
+#include "StructureCore/Structure.h"
 
 class FDTD2DTMz{
-
-    EMField2DTMz emField2DTMz;
+    Structure structure;
+    EMField2DTMz emField2DTMz = EMField2DTMz::EMField2DTMz(structure);
     RickerWaveletSource rickerWaveletSource;
     std::vector<std::vector<double>> waterFallVector;
 public:

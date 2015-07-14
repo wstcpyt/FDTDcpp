@@ -21,7 +21,7 @@ protected:
 public:
     friend class Boundary;
     friend class RickerWaveletSource;
-    EMFieldabstract(const double Cdtds);
+    EMFieldabstract(const double Cdtds, const Structure& structure);
     virtual ~EMFieldabstract(){};
     virtual void updateElectricField()=0;
     virtual void updateMagneticField()=0;

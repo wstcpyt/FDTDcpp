@@ -9,10 +9,11 @@
 #include "math.h"
 #include "constant.h"
 #include "FieldCore/EMField.h"
+#include "StructureCore/Structure.h"
 class EMField2DTMz: public EMFieldabstract {
 public:
     friend class RickerWaveletSource;
-    EMField2DTMz();
+    EMField2DTMz(const Structure& structure);
 
     virtual ~EMField2DTMz() { };
 

@@ -5,7 +5,7 @@
 #include "EMField_2D_TMz.h"
 #include <math.h>
 
-EMField2DTMz::EMField2DTMz(): EMFieldabstract(1.0 / sqrt(2.0)) {
+EMField2DTMz::EMField2DTMz(const Structure& structure): EMFieldabstract(1.0 / sqrt(2.0), structure) {
     Ez.assign(STRUCTURE_SIZE_X, std::vector<double> (STRUCTURE_SIZE_Y, 0.0));
     Hx.assign(STRUCTURE_SIZE_X, std::vector<double> (STRUCTURE_SIZE_Y - 1, 0.0));
     Hy.assign(STRUCTURE_SIZE_X - 1, std::vector<double> (STRUCTURE_SIZE_Y, 0.0));

@@ -4,7 +4,7 @@
 
 #include "EMFieldabstract.h"
 
-EMFieldabstract::EMFieldabstract(const double Cdtds): Cdtds(Cdtds) {
+EMFieldabstract::EMFieldabstract(const double Cdtds, const Structure& structure): Cdtds(Cdtds), structure(structure) {
     Ez.assign(STRUCTURE_SIZE, 0.0);
     Hy.assign(STRUCTURE_SIZE - 1, 0.0);
 }

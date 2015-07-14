@@ -9,8 +9,11 @@
 class Structure{
     std::vector<double> permittivity;
     std::vector<double> loss;
+    double permittivity1;
+    double permittivity2;
 public:
     Structure();
+    Structure(const double permitivity1, const double permittivity2);
     ~Structure(){};
     friend class EMFieldabstract;
     friend class EMField2DTMz;
@@ -20,6 +23,14 @@ public:
     }
     const std::vector<double> &getLoss() const {
         return loss;
+    }
+
+    double getPermittivity1() const {
+        return permittivity1;
+    }
+
+    double getpermittivity2() const {
+        return permittivity2;
     }
 };
 #endif //FDTDCPP_STRUCTURE_H

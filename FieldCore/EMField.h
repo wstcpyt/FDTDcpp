@@ -9,10 +9,8 @@
 #include "EMFieldabstract.h"
 class EMField:public EMFieldabstract
 {
-protected:
-    Structure structure;
 public:
-    EMField();
+    EMField(const Structure& structure);
     virtual ~EMField(){};
     virtual void updateElectricField();
     virtual void updateMagneticField();

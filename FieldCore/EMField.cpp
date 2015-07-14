@@ -3,7 +3,7 @@
 //
 
 #include "EMField.h"
-EMField::EMField() : EMFieldabstract(1.0) {
+EMField::EMField(const Structure& structure) : EMFieldabstract(1.0, structure) {
 }
 
 void EMField::updateElectricField() {
