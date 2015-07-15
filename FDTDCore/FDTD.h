@@ -13,7 +13,7 @@
 
 class FDTD{
     int time;
-    Structure structure = Structure::Structure(9, 16);
+    Structure structure = Structure::Structure(2, 4);
     EMField emField = EMField::EMField(structure);
     std::vector<double> lineChartVector;
     std::vector<std::vector<double>> waterFallVector;
