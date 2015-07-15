@@ -15,11 +15,11 @@
 #define GA_TARGET_SIZE 2
 
 using namespace std;
-typedef vector<int> imp_vector;
+typedef vector<double > imp_vector;
 
 struct ga_struct
 {
-    imp_vector imp {0,0};
+    imp_vector imp {1.0,1.0};
     double fitness;
 };
 
@@ -39,6 +39,7 @@ private:
     void elitism(ga_vector &population,
                  ga_vector &buffer, int esize );
     void mutate(ga_struct &member);
+    double fRand(double fMin, double fMax);
 
 };
 #endif //FDTDCPP_GENETICALGORITHM_H

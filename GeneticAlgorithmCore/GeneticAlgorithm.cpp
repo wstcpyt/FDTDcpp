@@ -49,7 +49,7 @@ void GeneticAlgorithm::init_population(ga_vector &population, ga_vector &buffer)
     for (int i=0;  i < GA_POPSIZE; i++) {
         ga_struct structure;
         structure.fitness = 0;
-        structure.imp = {rand() % 16, rand() %16};
+        structure.imp = {fRand(1.0, 16.0), fRand(1.0, 16.0)};
         population.push_back(structure);
     }
     buffer.resize(GA_POPSIZE);
@@ -114,5 +114,10 @@ void GeneticAlgorithm::elitism(ga_vector &population, ga_vector &buffer, int esi
 
 void GeneticAlgorithm::mutate(ga_struct &member) {
     int impposition = rand() % 1;
-    member.imp[impposition] = rand() % 16;
+    member.imp[impposition] = fRand(1.0, 16.0);
+}
+
+double GeneticAlgorithm::fRand(double fMin, double fMax) {
+    double f = (double)rand() / RAND_MAX;
+    return fMin + f * (fMax - fMin);
 }
