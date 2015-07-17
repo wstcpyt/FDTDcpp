@@ -6,9 +6,7 @@
 using namespace testing;
 class GeneticAlgorithmTest: public Test{
 public:
-    GeneticAlgorithm geneticAlgorithm;
 
 };
 TEST_F(GeneticAlgorithmTest, constructor){
-    geneticAlgorithm.runenvolotion();
 }

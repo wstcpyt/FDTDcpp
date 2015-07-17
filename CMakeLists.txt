@@ -5,7 +5,7 @@ set(SOURCE_FILES main.cpp)
 
 set(TEST_FILES FieldCore/unit_test/FieldTest.cpp FDTDCore/unit_test/FDTDTest.cpp SourceCore/unit_test/SourceUnitTest.cpp
 BoundaryCore/unit_test/BoundaryTEST.cpp StructureCore/unit_test/StructureTest.cpp BoundaryCore/unit_test/TFSFTMzTEST.cpp
-FrequencyDomainCore/unit_test/FrequencyDomainTest.cpp GeneticAlgorithmCore/unit_test/GeneticAlgorithmTest.cpp)
+FrequencyDomainCore/unit_test/FrequencyDomainTest.cpp)
 
 add_executable(FDTDcpp ${SOURCE_FILES} ${TEST_FILES})
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
@@ -14,7 +14,7 @@ find_package( PkgConfig REQUIRED)
 pkg_check_modules( gsl REQUIRED gsl )
 include_directories(${gsl_INCLUDE_DIRS})
 set(GSL ${GSL} ${gsl_LIBRARIES})
-target_link_libraries( FDTDcpp GSL )
+target_link_libraries( FDTDcpp G1SL )
 
 
 enable_testing()
@@ -29,7 +29,6 @@ add_subdirectory(BoundaryCore)
 add_subdirectory(StructureCore)
 add_subdirectory(CommonCore)
 add_subdirectory(FrequencyDomainCore)
-add_subdirectory(GeneticAlgorithmCore)
 
 
 #link libraries
@@ -39,7 +38,6 @@ target_link_libraries(FDTDcpp fieldCore)
 target_link_libraries(FDTDcpp fdtdCore)
 target_link_libraries(FDTDcpp boundaryCore)
 target_link_libraries(FDTDcpp frequencyDomainCore)
-target_link_libraries(FDTDcpp geneticAlgorithm)
 target_link_libraries(FDTDcpp gmock)
 target_link_libraries(FDTDcpp gtest)
 
