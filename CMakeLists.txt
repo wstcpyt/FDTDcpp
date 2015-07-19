@@ -14,7 +14,7 @@ find_package( PkgConfig REQUIRED)
 pkg_check_modules( gsl REQUIRED gsl )
 include_directories(${gsl_INCLUDE_DIRS})
 set(GSL ${GSL} ${gsl_LIBRARIES})
-target_link_libraries( FDTDcpp G1SL )
+target_link_libraries( FDTDcpp GSL )
 
 
 enable_testing()
