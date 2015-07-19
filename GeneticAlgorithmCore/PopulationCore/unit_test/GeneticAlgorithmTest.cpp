@@ -24,25 +24,34 @@ TEST_F(GeneticAlgorithmTest, PopulationConstructor){
     ASSERT_THAT(population.getGaStruct().populationproperties[1], 1.0);
     ASSERT_THAT(population.getGaStruct().populationproperties[2], 2.0);
     ASSERT_THAT(population.getPopulationNumber(), 10);
-    ASSERT_THAT(population.buffer.size(), populationNumber);
-    ASSERT_THAT(population.population.size(), populationNumber);
+    ASSERT_THAT((*population.bufferP).size(), populationNumber);
+    ASSERT_THAT((*population.populationP).size(), populationNumber);
+    ASSERT_THAT(population.getPopulationproperitessize(), populationproperties.size());
 }
 
 TEST_F(GeneticAlgorithmTest, PopulationInit){
     double rand_min = 1.0;
     double rand_max = 4.0;
     population.init(rand_min, rand_max);
-    ASSERT_THAT(population.population.size(), populationNumber);
-    ASSERT_THAT(population.population[0].populationproperties[0], Ge(rand_min));
-    ASSERT_THAT(population.population[0].populationproperties[0], Le(rand_max));
+    ASSERT_THAT((*population.populationP).size(), populationNumber);
+    ASSERT_THAT((*population.populationP)[0].populationproperties[0], Ge(rand_min));
+    ASSERT_THAT((*population.populationP)[0].populationproperties[0], Le(rand_max));
 }
 
 TEST_F(GeneticAlgorithmTest, sortByFitness){
     population.init(1.0, 5.0);
-    for (auto &popind:population.population){
+    for (auto &popind:(*population.populationP)){
        popind.fitness = popind.populationproperties[0];
     }
     population.sortByFitness();
-    ASSERT_THAT(population.population[0].fitness, Le(population.population[1].fitness));
-    ASSERT_THAT(population.population[1].fitness, Le(population.population[2].fitness));
+    ASSERT_THAT((*population.populationP)[0].fitness, Le((*population.populationP)[1].fitness));
+    ASSERT_THAT((*population.populationP)[1].fitness, Le((*population.populationP)[2].fitness));
+}
+
+TEST_F(GeneticAlgorithmTest, mate){
+    auto bufferP_before = population.bufferP;
+    auto populationP_before = population.populationP;
+    population.mate(0.1,0.2);
+    ASSERT_THAT(population.populationP, bufferP_before);
+    ASSERT_THAT(population.bufferP, populationP_before);
 }

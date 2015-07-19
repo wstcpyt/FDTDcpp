@@ -15,13 +15,16 @@ class Population {
         Populationtype populationproperties;
         double fitness;
     };
+    unsigned int populationproperitessize;
     GaStruct gaStruct;
     typedef vector<GaStruct> GaVector;
     unsigned int populationNumber;
-public:
     GaVector population;
     GaVector buffer;
-    Population(Populationtype populationstruct, unsigned int population_number);
+    double randomMin, randMax;
+public:
+    GaVector *populationP, *bufferP;
+    Population(Populationtype population_properties, unsigned int population_number);
 
     const GaStruct &getGaStruct() const {
         return gaStruct;
@@ -31,6 +34,11 @@ public:
         return populationNumber;
     }
 
+
+    unsigned int getPopulationproperitessize() const {
+        return populationproperitessize;
+    }
+
     void init(double rand_min, double rand_max);
     void sortByFitness();
     void mate(double elitrate, double mutationrate);
@@ -38,6 +46,8 @@ public:
 private:
     double doubleRand(double rand_min, double rand_max);
     void eltism(int e_size);
+    void mutate(GaStruct &mutatemember);
+    void swap();
 };
 
 #endif //FDTDCPP_GENETICALGORITHM_H
